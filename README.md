@@ -16,14 +16,15 @@ to change the variable
    
    Next 
    
-   '''bash
+   ```bash
    mvn install 
-   '''
+   ```
    
    Next clone the [following project](https://github.com/diega/dbus-java/)
-   '''bash
+   
+   ```bash
    mvn install 
-   '''
+   ```
 
 Next import this project, you can play with it. 
 It currently only contains the OCCI mandatory interface. 
