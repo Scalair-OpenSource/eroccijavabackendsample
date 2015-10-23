@@ -12,6 +12,7 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.6</java.version>
     </properties>
 
     <repositories>
@@ -51,6 +52,9 @@
                 <version>1.4.0</version>
                 <configuration>
                     <mainClass>org.ow2.erocci.Main</mainClass>
+                    <arguments>
+                        <argument>-Djava.library.path=${java.library.path}</argument>
+                    </arguments>
                 </configuration>
             </plugin>
 
@@ -67,6 +71,16 @@
                     </execution>
                 </executions>
             </plugin>
+
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.3</version>
+                    <configuration>
+                        <source>${java.version}</source>
+                        <target>${java.version}</target>
+                    </configuration>
+                </plugin>
         </plugins>
     </build>
 </project>
