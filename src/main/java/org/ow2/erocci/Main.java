@@ -8,29 +8,24 @@ public class Main {
 
     private DBusConnection dbusConnection;
 
-    private boolean stop = false;
-
     public void start(DBusInterface impl) {
         try {
             dbusConnection = DBusConnection.getConnection(DBusConnection.SESSION);
             //Service Name can be changed
-            dbusConnection.requestBusName("org.occiware.java.test");
+            dbusConnection.requestBusName("org.occiware.java");
             //EROCCI consider that the service is available on / (convention)
             dbusConnection.exportObject("/", impl);
-            while (!stop) {
-                try {
-                    Thread.sleep(1000);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-            dbusConnection.disconnect();
+
+            System.out.println(dbusConnection.getUniqueName());
+
+
         } catch (DBusException e) {
             e.printStackTrace();
         }
     }
 
-    public static void main(String[] args) {
+
+    public static void main(String[] args) throws Exception {
         new Main().start(new MyBackend());
     }
 }
