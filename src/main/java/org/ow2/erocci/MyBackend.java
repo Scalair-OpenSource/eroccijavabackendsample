@@ -3,6 +3,10 @@ package org.ow2.erocci;
 import org.freedesktop.DBus;
 import org.freedesktop.dbus.UInt32;
 import org.freedesktop.dbus.Variant;
+import org.ow2.erocci.backend.Pair;
+import org.ow2.erocci.backend.Quad;
+import org.ow2.erocci.backend.Struct1;
+import org.ow2.erocci.backend.Struct2;
 
 import java.util.HashMap;
 import java.util.List;
@@ -12,7 +16,7 @@ import java.util.logging.Logger;
 /**
  * Created by petitpre on 23/10/15.
  */
-public class MyBackend implements org.ow2.erocci.backend, DBus.Properties {
+public class MyBackend implements org.ow2.erocci.backend.core, DBus.Properties {
 
     private static final Logger LOG = Logger.getLogger(MyBackend.class.getName());
 
