@@ -1,7 +1,13 @@
-#Initial example to create a backend in Java
+# erocci Java Backend
 
-To start a backend, you only have to type :
+## Build
 
-```bash
-mvn install exec:java
+```sh
+make
+```
+
+## Run
+
+```sh
+make run
 ```
