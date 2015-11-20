@@ -1,7 +1,11 @@
 #Initial example to create a backend in Java
 
-To start a backend, you only have to type :
+compile and package Erocci-DBus backend :
 
-```bash
-mvn install exec:java
-```
+$ mvn assembly:assembly
+
+to run it :
+
+$ java -Djava.library.path=. -cp target/DBUSJavaBackend-0.0.1-SNAPSHOT-jar-with-dependencies.jar org.ow2.erocci.Main
+
+You can launch erocci with the configuration file dbus.config
