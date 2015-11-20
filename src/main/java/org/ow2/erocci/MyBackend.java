@@ -1,5 +1,7 @@
 package org.ow2.erocci;
 
+import com.google.common.base.Charsets;
+import com.google.common.io.Resources;
 import org.freedesktop.DBus;
 import org.freedesktop.dbus.UInt32;
 import org.freedesktop.dbus.Variant;
@@ -8,9 +10,11 @@ import org.ow2.erocci.backend.Quad;
 import org.ow2.erocci.backend.Struct1;
 import org.ow2.erocci.backend.Struct2;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
@@ -85,13 +89,22 @@ public class MyBackend implements org.ow2.erocci.backend.core, DBus.Properties {
 
     @Override
     public <A> A Get(String interface_name, String property_name) {
-        System.out.println(interface_name);
-        return null;
+        try {
+            LOG.info("Get " + interface_name + " " + property_name);
+            if ("schema".equals(property_name)) {
+                final String s = Resources.toString(Resources.getResource("occi_core.xml"), Charsets.UTF_8);
+                return (A) s;
+            }
+            return null;
+        } catch (IOException ex) {
+            LOG.log(Level.WARNING, ex.getMessage(), ex);
+            throw new RuntimeException(ex);
+        }
     }
 
     @Override
     public <A> void Set(String interface_name, String property_name, A value) {
-        System.out.println(interface_name);
+        throw new UnsupportedOperationException();
     }
 
     @Override
